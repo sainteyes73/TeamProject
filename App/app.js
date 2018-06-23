@@ -46,7 +46,7 @@ app.post('/projects/create', upload.single('displayImage'), function (req, res, 
   console.log(req.file);
   next()
 })
-
+mongoose.connect('mongodb://localhost:27017/test');
 //Mongoose API http://mongoosejs.com/docs/api.html
 mongoose.connect(process.env.IP + "/local");
 mongoose.connection.on('connected',function(){
