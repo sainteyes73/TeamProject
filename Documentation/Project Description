@@ -1,0 +1,5 @@
+An instructable like site mixed with a project management system. Users will be 
+able to create projects with steps and supply lists. Public users can view the 
+projects. Logged in users can comment on the projects and save project to their
+own workspace. Users can use the workspace as a checklist and ticket tracking
+esque interface in order to progress through and work on the project. 

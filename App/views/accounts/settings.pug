@@ -1,0 +1,15 @@
+extends ../templayout
+include ../mixins/form
+
+block content
+    .container
+        .page-header
+            h1=title
+        p.lead
+        h3 Update your password
+        
+        form(method="POST", action="/accounts/settings")
+            +obfuscatedTextInput("old_password","Old Password")(type="password",required="required")
+            +obfuscatedTextInput("new_password","New Password")(type="password",required="required")
+            +obfuscatedTextInput("confirm_password","Confirm Password")(type="password",required="required")
+            +submit()

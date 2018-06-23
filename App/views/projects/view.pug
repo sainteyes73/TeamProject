@@ -1,0 +1,27 @@
+extends ../templayout
+block content
+    .container
+        h1=doc.project_name
+        img(src="/"+doc.img_location, alt=doc.project_name+" Photo", style="width: 100%")
+        br
+        p.lead=doc.project_description
+        hr
+        p.lead
+            |Steps
+        hr
+        each step in doc.steps
+            strong=step.sequence+". "+step.name
+            p=step.description
+        
+        p.lead
+            |Supplies
+        hr
+        each supply in doc.supplies
+            b=supply.name
+            p=supply.description
+            p="Quantity: "+supply.quantity
+            hr
+        
+        if user && doc.user_id == user._id
+            a(href="/projects/edit/" + doc.id).btn.btn-primary Edit
+            a(href="/projects/delete/" + doc.id).btn.btn-danger Delete

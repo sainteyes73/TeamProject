@@ -1,0 +1,24 @@
+extends ../templayout
+include ../mixins/form
+
+block content
+    .container
+        h1=title
+        p.lead
+                |This is dashboard page
+        hr
+        h1 Users
+        hr
+        each doc in docs
+            .col-xs-12.col-md-8
+                form(method="POST", action="/administration/updateusers/"+doc._id)
+                    div.row
+                        p.form-group=doc.username
+                        +dropdown("permissions", "Permission", ['guest','administrator'], doc.permissions).form-group
+                    div
+                        +submit()
+                        | 
+                        +delete("/administration/deleteuser/"+doc._id)
+                br
+                hr
+            

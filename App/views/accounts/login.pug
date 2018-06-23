@@ -1,0 +1,21 @@
+extends ../templayout
+
+include ../mixins/form
+
+block content
+
+    .container
+        .page-header
+            h1=title
+        p.lead
+            |This is a login page
+        form(method="POST", action="/accounts/login")
+            +regularTextInput("username", "Username")(required="required")
+            +obfuscatedTextInput("password","Password")(type="password",required="required")
+            div
+                input.btn.btn-primary(type="submit",value="Login")
+                +cancel()
+                
+            div.text-center
+                h5 Don't have an account?
+                a.btn-center(href="/accounts/signup") Signup for a Free Account

@@ -1,0 +1,54 @@
+//- 4c1 for Title
+mixin textInput(name, id, label, value) 
+  div.form-group
+    label.label.label-primary(for=name+"-"+id)= label
+    input.form-control(type='text', name=name+"-"+id, id=name+"-"+id, value=value)
+    
+mixin regularTextInput(name, label, value) 
+  div.form-group
+    label.label.label-primary(for=name)= label
+    input.form-control(type='text', name=name, id=name, value=value)
+
+mixin obfuscatedTextInput(name, label, value) 
+  div.form-group
+    label.label.label-primary(for=name)= label
+    input.form-control(type='password', name=name, id=name, value=value)
+
+mixin regularTextarea(name, label, value)
+  div.form-group
+    label.label.label-primary(for=name)= label
+    textarea.form-control(type='text', name=name, id=name,)=value
+
+mixin select(name, label)
+  .form-group
+    label.label.label-primary(for=name)= label
+    select.form-control(name=name)
+      option(value='Select', select= true) -- Select --
+      option(value='Science', select= true) Science
+      option(value='Furniture', select= true) Furniture
+      option(value='Bake', select= true) Bake
+      option(value='Wood', select= true) Wood
+      option(value='Metal', select= true) Metal
+      
+mixin textarea(name, id, label, value)
+  div.form-group
+    label.label.label-primary(for=name+"-id")= label
+    textarea.form-control(type='text', name=name, id=name+"-id", value=value)
+    
+mixin submit()
+  input.btn.btn-primary(type="submit",value="Save")
+    
+mixin cancel()
+  a.btn.btn-default(href="/")="Cancel"
+  
+mixin dropdown(name, label, params, value)
+    label(for=name+"-id")= label
+    select.form-group.form-control(id=name+"-id", name=name)
+        each param in params
+              if(param == value)
+                  option(value=param, selected=true)=param
+              else
+                  option(value=param)=param
+
+mixin delete(link)
+  a.btn.btn-danger(href=link)="Delete"

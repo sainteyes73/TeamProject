@@ -1,0 +1,34 @@
+extends ../templayout
+include ../mixins/form
+
+block content
+    .container
+        h1=title
+        p.lead
+            |This is create project page
+        
+        form(method='POST', action="/projects/create", enctype="multipart/form-data")
+            //- textInput(name, label, value)
+            +regularTextInput('projectTitle', 'Project Title', '')
+            
+            input.input-group(type="file", name="displayImage")
+            
+            //- textarea(name, label, value)
+            +regularTextarea('description', 'Description', '')
+            
+            div#steps
+                div
+                    p Step 1
+                    +textInput('stepTitle', '1', 'Step Title', '')
+                    +textInput('stepDescription', '1', 'Step Description', '')
+            button.btn.btn-default(onclick='javascript:addStep(); return false;') Add Step
+            
+            div#supplies
+                div
+                    +textInput('supplyTitle', '1', 'Supply Title', '')
+                    +textInput('supplyDescription', '1', 'Supply Description', '')
+                    +textInput('supplyQuantity', '1', 'Supply Quantity', '')
+            button.btn.btn-default(onclick='javascript:addSupply(); return false;') Add Supply
+            input.input-group.btn.btn-primary(type="submit")
+            
+        script(src='/js/steps.js')

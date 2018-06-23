@@ -1,0 +1,17 @@
+extends ../templayout
+include ../mixins/thumbnail
+
+block content
+    .container
+        h1=title
+        p.lead
+            |All projects on this site
+            
+        div.row
+            each doc in docs
+                h1
+                    //a(href="/projects/view/" + doc.id)= doc.project_name
+                +thumbnail("/projects/view/" + doc.id, "/"+doc.img_location, doc.project_name+" Photo", doc.project_name)
+                each doc2 in docs2
+                    //if doc2.id == doc.user_id
+                        //p=doc2.first_name +" "+ doc2.last_name

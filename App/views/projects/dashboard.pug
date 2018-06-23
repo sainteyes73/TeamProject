@@ -1,0 +1,14 @@
+extends ../templayout
+block content
+    .container
+        h1=title
+        p.lead
+            |This is dashboard page
+            
+            each doc in docs
+                if doc.user_id == user._id
+                    h1
+                        a(href="/projects/view/" + doc.id)= doc.project_name
+                    p=doc.project_description
+            hr
+            a.btn.btn-default.btn-mini(href='/projects/create' role='button') Create New project

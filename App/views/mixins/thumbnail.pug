@@ -1,0 +1,5 @@
+mixin thumbnail(link,source,alter, text)
+    div.col-xs-6.col-md-3
+        label= text
+        a.thumbnail(id = alter+"-id",href=link)
+            img(src=source,alt=alter)

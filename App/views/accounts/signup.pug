@@ -1,0 +1,20 @@
+extends ../templayout
+
+include ../mixins/form
+
+block content
+    .container
+        .page-header
+            h1=title
+        p.lead
+            |This is a signup page
+            
+        form(method="POST",action="/accounts/signup")
+            +regularTextInput("first_name","First Name")(value=doc.name,pattern="^[a-zA-Z\\s]+$",required="required")
+            +regularTextInput("last_name","Last Name")(value=doc.name,pattern="^[a-zA-Z\\s]+$",required="required")
+            +regularTextInput("username","Username")(value=doc.username,pattern="^[a-zA-Z0-9]+$",required="required")
+            +obfuscatedTextInput("password","Password")(type="password",pattern="^(?=(.*\d){1,})(?=.*[a-zA-Z])(?=.*[!@#$%])[0-9a-zA-Z!@#$%]{8,}",minlength="8",required="required",title="must be at least 8 characters long and contain a number and special character ")
+            +regularTextInput("email","Email")(value=doc.email,type="email",required="required")
+            div.w3-margin-top
+                +submit()
+                +cancel()
